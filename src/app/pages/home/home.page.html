@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Users
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item *ngFor="let user of users; let i = index" (click)="openUser(i)">
+          <ion-avatar slot="start">
+            <img [src]="user.picture.thumbnail" />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ user.name?.title | capitalize }} {{ user.name?.first | capitalize }} {{ user.name?.last | capitalize }}</h2>
+          </ion-label>
+        </ion-item>  
+    </ion-list>  
+</ion-content>

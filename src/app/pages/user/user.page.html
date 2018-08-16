@@ -1,0 +1,40 @@
+<!-- Default back button -->
+<ion-header>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>User</ion-title>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/home">Switch User</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content>
+  <ion-card *ngIf="user">
+    <ion-img [src]="user.picture?.large"></ion-img>
+  
+    <ion-card-content>
+      <ion-card-title>{{ user.name?.title | capitalize }} {{ user.name?.first | capitalize }} {{ user.name?.last | capitalize }}</ion-card-title>
+      <div padding *ngIf="!auth.isLoggedIn">
+        <ion-button color="secondary" shape="round" fill="outline" (click)="auth.login()">Login to See More Detail</ion-button>
+      </div>
+      <div padding [hidden]="!auth.isLoggedIn">
+        <ion-item icon-left>
+            <span ngClass="flag-icon flag-icon-{{user.nat | lowercase}}"></span>
+            <ion-icon slot="start" [name]="user.gender"></ion-icon>
+          </ion-item>
+        <ion-item icon-left>
+            <ion-icon slot="start" name="call"></ion-icon>
+            {{ user.phone }}
+        </ion-item>
+        <ion-item text-wrap>
+            <ion-icon slot="start" name="mail"></ion-icon>
+            {{ user.email }}
+        </ion-item>
+        <ion-button color="secondary" shape="round" fill="outline" (click)="auth.logout()">Logout</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
