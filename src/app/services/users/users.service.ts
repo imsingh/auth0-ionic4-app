@@ -11,11 +11,16 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    return this.http.get('https://randomuser.me/api/?results=20&?seed=foobar')
-    .pipe(
-      map((data: any) => data.results),
-      tap( users => this.users = users),
-    );
+    if (this.users.length) {
+      return observableOf(this.users);
+    } else {
+
+      return this.http.get('https://randomuser.me/api/?results=20&?seed=foobar')
+      .pipe(
+        map((data: any) => data.results),
+        tap(users => this.users = users),
+      );
+    }
   }
 
   getUser(index) {

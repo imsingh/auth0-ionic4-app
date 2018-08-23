@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 import { NavController } from '@ionic/angular';
 
@@ -7,12 +7,14 @@ import { NavController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   users: Array<any> = [];
   constructor(private usersService: UsersService, private navCtrl: NavController) {
+  }
+
+  ngOnInit() {
     this.usersService.getUsers()
     .subscribe((users: any) => {
-      console.log(users);
       this.users = users;
     });
   }

@@ -15,6 +15,7 @@ export class UserPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router) {
   }
+
   ngOnInit() {
     this.route.paramMap
     .pipe(
