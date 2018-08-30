@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   users: Array<any> = [];
-  constructor(private usersService: UsersService, private navCtrl: NavController) {
+  constructor(private usersService: UsersService, private navCtrl: NavController, private authService: AuthService) {
   }
 
   ngOnInit() {

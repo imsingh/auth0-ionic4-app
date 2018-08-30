@@ -11,7 +11,7 @@ import { ParamMap } from '@angular/router';
 })
 export class UserPage implements OnInit {
   user: any;
-  constructor(private usersService: UsersService, private auth: AuthService,
+  constructor(private usersService: UsersService, private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router) {
   }

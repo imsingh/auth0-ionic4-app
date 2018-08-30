@@ -3,6 +3,10 @@
     <ion-title>
       Users
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button shape="round" fill="outline" color="light" (click)="authService.login()" *ngIf="!authService.isLoggedIn">Login</ion-button>
+      <ion-button shape="round" fill="outline" color="light" (click)="authService.logout()" *ngIf="authService.isLoggedIn">Logout</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
