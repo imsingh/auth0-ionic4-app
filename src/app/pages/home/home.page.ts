@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users/users.service';
-import { AuthService } from '../../services/auth/auth.service';
 import { NavController } from '@ionic/angular';
+import { DataService } from '../../services/data/data.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +9,18 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  users: Array<any> = [];
-  constructor(private usersService: UsersService, private navCtrl: NavController, private authService: AuthService) {
+  people: Array<any> = [];
+  constructor(private dataService: DataService, private navCtrl: NavController, private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.usersService.getUsers()
-    .subscribe((users: any) => {
-      this.users = users;
+    this.dataService.getPeopleList()
+    .subscribe((people: any) => {
+      this.people = people;
     });
   }
 
-  openUser(index) {
-    this.navCtrl.goForward(`/user/${index}`);
+  openPerson(index) {
+    this.navCtrl.goForward(`/person/${index}`);
   }
 }

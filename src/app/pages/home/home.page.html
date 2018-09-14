@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Users
+      People
     </ion-title>
     <ion-buttons slot="end">
       <ion-button shape="round" fill="outline" color="light" (click)="authService.login()" *ngIf="!authService.isLoggedIn">Login</ion-button>
@@ -12,12 +12,12 @@
 
 <ion-content>
   <ion-list>
-      <ion-item *ngFor="let user of users; let i = index" (click)="openUser(i)">
+      <ion-item *ngFor="let person of people; let i = index" (click)="openPerson(i)">
           <ion-avatar slot="start">
-            <img [src]="user.picture.thumbnail" />
+            <img [src]="person.picture.thumbnail" />
           </ion-avatar>
           <ion-label>
-            <h2>{{ user.name?.title | capitalize }} {{ user.name?.first | capitalize }} {{ user.name?.last | capitalize }}</h2>
+            <h2>{{ person.name?.title | capitalize }} {{ person.name?.first | capitalize }} {{person.name?.last | capitalize }}</h2>
           </ion-label>
         </ion-item>  
     </ion-list>  

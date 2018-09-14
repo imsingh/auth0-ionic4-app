@@ -6,31 +6,31 @@ import { map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
-  users: any = [];
+export class DataService {
+  people: any = [];
   constructor(private http: HttpClient) { }
 
-  getUsers() {
-    if (this.users.length) {
-      return observableOf(this.users);
+  getPeopleList() {
+    if (this.people.length) {
+      return observableOf(this.people);
     } else {
 
       return this.http.get('https://randomuser.me/api/?results=20&?seed=foobar')
       .pipe(
         map((data: any) => data.results),
-        tap(users => this.users = users),
+        tap(people => this.people = people),
       );
     }
   }
 
-  getUser(index) {
-    if (!this.users[index]) {
-      return this.getUsers()
+  getPerson(index) {
+    if (!this.people[index]) {
+      return this.getPeopleList()
       .pipe(
-        map(users => this.users[index])
+        map(people => this.people[index])
       );
     } else {
-      return observableOf(this.users[index]);
+      return observableOf(this.people[index]);
     }
   }
 }
