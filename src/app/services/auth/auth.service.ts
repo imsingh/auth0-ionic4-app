@@ -19,8 +19,6 @@ export class AuthService {
     scope: 'openid'
   });
 
-
-
   constructor(public router: Router) {
     // Check if user is logged In when Initializing
     const loggedIn = this.isLoggedIn = this.isAuthenticated();
@@ -44,6 +42,7 @@ export class AuthService {
         this.isLoggedIn$.next(loggedIn);
         this.router.navigate(['/home']);
       }
+      console.log(this.isLoggedIn);
     });
   }
 

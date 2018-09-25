@@ -14,16 +14,16 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public auth: AuthService
+    private authService: AuthService
   ) {
     this.initializeApp();
+    this.authService.handleAuthentication();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.auth.handleAuthentication();
     });
   }
 }

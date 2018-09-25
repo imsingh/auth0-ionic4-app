@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DataService } from '../../services/data/data.service';
-import { AuthService } from '../../services/auth/auth.service';
+import { DataService } from '../services/data/data.service';
+import { AuthService } from '../services/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { ParamMap } from '@angular/router';
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data/data.service';
 import { NavController } from '@ionic/angular';
-import { DataService } from '../../services/data/data.service';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +21,6 @@ export class HomePage implements OnInit {
   }
 
   openPerson(index) {
-    this.navCtrl.goForward(`/person/${index}`);
+    this.navCtrl.navigateForward(`/person/${index}`);
   }
 }
